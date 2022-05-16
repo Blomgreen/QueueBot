@@ -26,7 +26,7 @@ namespace QueueBot
             };
             // Or with methods
             embed.AddField("Commands",
-                "/queueadd {token} {snipe amount} - Add tokens to the queue\n/restart - restarts / forcestarts the sniper\n/queueremove {token} - Removes the given token from the queue completely")
+                "/queueadd {token} {snipe amount} - Add tokens to the queue\n/restart - restarts / forcestarts the sniper\n/queueremove {token} - Removes the given token from the queue completely\n/queue - Checks all tokens, gets the users ID + snipes remaining and sends it")
                 .WithAuthor(Context.Client.CurrentUser)
                 .WithFooter(footer => footer.Text = "Blomgreen#6969")
                 .WithColor(Color.Blue)
@@ -94,6 +94,39 @@ namespace QueueBot
             {
                 await ReplyAsync($"Couldn't find {token} in queue.txt");
             }
+        }
+
+        [Command("updatequeue")]
+        [Alias("queue", "printqueue")]
+        public async Task updateQueue()
+        {
+            List<string> queue = Methods.printQueue();
+            string[] queueContent = queue.ToArray();
+            string content = null;
+            Console.WriteLine($"This is current content {content}");
+            foreach (var line in queueContent)
+            {
+                content += line + "\n";
+            }
+
+
+            var embed = new EmbedBuilder
+            {
+                // Embed property can be set within object initializer
+                Title = "Hello world!",
+                Description = "I am a description set by initializer."
+            };
+            // Or with methods
+            embed.AddField("Users in queue", content)
+                .WithAuthor(Context.Client.CurrentUser)
+                .WithFooter(footer => footer.Text = "Blomgreen#6969")
+                .WithColor(Color.Blue)
+                .WithTitle("Queue list")
+                .WithDescription("Here you'll find the current queue, including the amount of snipes remaining.")
+                .WithCurrentTimestamp();
+
+            //Your embed needs to be built before it is able to be sent
+            await ReplyAsync(embed: embed.Build());
         }
     }
 }
