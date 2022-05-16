@@ -14,4 +14,6 @@ Add the bot token to 'bot token.txt' (Just plaintext the first line)
 Step 4.
 Transfer all of your velocity files to the subfolder 'velocity'
 
+To get started, try the /help command
+
 You can now launch the bot , and start the sniper with the /restart, command.
