@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,24 +19,6 @@ namespace QueueBot
         {
             var User = Context.User as SocketUser;
             string Message = Context.Message.Content;
-            var embed = new EmbedBuilder
-            {
-                // Embed property can be set within object initializer
-                Title = "Hello world!",
-                Description = "I am a description set by initializer."
-            };
-            // Or with methods
-            embed.AddField("Commands",
-                "/queueadd {token} {snipe amount} - Add tokens to the queue\n/restart - restarts / forcestarts the sniper\n/queueremove {token} - Removes the given token from the queue completely\n/queue - Checks all tokens, gets the users ID + snipes remaining and sends it")
-                .WithAuthor(Context.Client.CurrentUser)
-                .WithFooter(footer => footer.Text = "Blomgreen#6969")
-                .WithColor(Color.Blue)
-                .WithTitle("Command list")
-                .WithDescription("Here you'll find the list of commands")
-                .WithCurrentTimestamp();
-
-            //Your embed needs to be built before it is able to be sent
-            await ReplyAsync(embed: embed.Build());
             
 
         }
@@ -123,6 +106,53 @@ namespace QueueBot
                 .WithColor(Color.Blue)
                 .WithTitle("Queue list")
                 .WithDescription("Here you'll find the current queue, including the amount of snipes remaining.")
+                .WithCurrentTimestamp();
+
+            //Your embed needs to be built before it is able to be sent
+            await ReplyAsync(embed: embed.Build());
+        }
+
+        [Command("stats")]
+        [Alias("status")]
+        public async Task status()
+        {
+            string[] api = File.ReadAllLines("APIkey.txt");
+
+            string APIKEY = api[0];
+
+            WebClient wc = new WebClient();
+            string rawData = wc.DownloadString($"https://genefit.cc/velocity/api/stats?key={APIKEY}");
+            Console.WriteLine(rawData);
+
+            string servercountStep1 = rawData.Split(',')[0];
+            string serverCount = servercountStep1.Split(':')[1];
+            Console.WriteLine($"servercount: {serverCount}");
+
+            string altcountStep1 = rawData.Split(',')[1];
+            string altcount = altcountStep1.Split(':')[1];
+            Console.WriteLine($"Altcount: {altcount}");
+
+            string claimednitroStep1 = rawData.Split(',')[2];
+            string claimedNitro = claimednitroStep1.Split(':')[1];
+            Console.WriteLine($"Claimed nitro: {claimedNitro}");
+
+            string content = $"Server count: {serverCount}\nAlt count: {altcount}\nSniped nitro: {claimedNitro}";
+
+
+            var embed = new EmbedBuilder
+            {
+                // Embed property can be set within object initializer
+                Title = "Hello world!",
+                Description = "I am a description set by initializer."
+            };
+            // Or with methods
+            embed.AddField("Stats",
+                content)
+                .WithAuthor(Context.Client.CurrentUser)
+                .WithFooter(footer => footer.Text = "Blomgreen#6969")
+                .WithColor(Color.Blue)
+                .WithTitle("Status ")
+                .WithDescription("Here you'll find the sniper stats")
                 .WithCurrentTimestamp();
 
             //Your embed needs to be built before it is able to be sent
