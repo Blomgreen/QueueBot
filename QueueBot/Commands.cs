@@ -19,8 +19,26 @@ namespace QueueBot
         {
             var User = Context.User as SocketUser;
             string Message = Context.Message.Content;
-            
 
+            var embed = new EmbedBuilder
+            {
+                // Embed property can be set within object initializer
+                Title = "Hello world!",
+                Description = "I am a description set by initializer."
+            };
+            string content = "/help - Display all available commands\n/queueadd {token} {amount} - add a token to the sniping queue\n/restart - restart / forcestart the sniper\n/removetoken {token} - completely removes a token from the queue\n/queue - Print the current queue, AND check if their tokens are valid\n/status - Use your API key, to get stats regarding servers, alts and sniped nitro";
+            // Or with methods
+            embed.AddField("Command list",
+                content)
+                .WithAuthor(Context.Client.CurrentUser)
+                .WithFooter(footer => footer.Text = "Blomgreen#6969")
+                .WithColor(Color.Blue)
+                .WithTitle("Commands")
+                .WithDescription("Here you'll find the list of commands")
+                .WithCurrentTimestamp();
+
+            //Your embed needs to be built before it is able to be sent
+            await ReplyAsync(embed: embed.Build());
         }
         
         [Command("queueadd")]

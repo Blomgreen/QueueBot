@@ -1,1 +1,1 @@
-Your api-key here!
+Velocity API key goes here!
