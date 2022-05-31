@@ -1,0 +1,1 @@
+Paste discord ID of users that should have command access!

@@ -1,0 +1,2 @@
+Id for actively sniping
+Id for awaiting in queue

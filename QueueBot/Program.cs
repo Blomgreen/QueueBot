@@ -37,7 +37,7 @@ namespace DiscordNETBotTemplate
             await RegisterCommandsAsync();
             try
             {
-                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines("bot token.txt")[0]);
+                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines($"{Environment.CurrentDirectory}\\config\\bot token.txt")[0]);
             }
                 
             catch (Exception ex)
