@@ -1,6 +1,5 @@
 # QueueBot
-A queuebot for integrating velocity sniper with discord bot commands - WARNING, I HAVE NOT MADE A PERMISSIONS SYSTEM, SO ONLY INVITE THIS BOT TO A PRIVATE SERVER, AND NOT YOUR S4U OR WHATEVER YOUR USE CASE MIGHT BE, EVERYONE CAN USE THE COMMANDS!
-
+A queuebot for integrating velocity sniper with discord bot commands - FOR WINDOWS ONLY
 
 Step 1.
 Download the latest release.
