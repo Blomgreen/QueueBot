@@ -161,9 +161,12 @@ namespace QueueBot
                     if (firstToken == 0)
                     {
                         content += line + Active_Emoji + "\n";
-
+                        firstToken++;
                     }
-                    content += line + Awaiting_Emoji + "\n";
+                    else
+                    {
+                        content += line + Awaiting_Emoji + "\n";
+                    }
                 }
 
 
