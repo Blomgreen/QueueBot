@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uDjGLHLzWZke0EyjB42/6QzlmmLcccIeNog6CXiPBX43tMkEuLLh+xq+u0CyS0gVQdy9lo/rlsmWgN2/xg2SSg==",
+  "dgSpecHash": "lNneM7TPrw/H2SUubgBodhGCN7IuqpF+fq+pA6kujpXvJ82VBRC9VFoLSvk1Hx8qF8ZFAUTO5BTiHChLb/dOPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\QueueBot.csproj",
+  "projectFilePath": "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\QueueBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Disabled\\.nuget\\packages\\discord.net\\3.6.1\\discord.net.3.6.1.nupkg.sha512",
     "C:\\Users\\Disabled\\.nuget\\packages\\discord.net.commands\\3.6.1\\discord.net.commands.3.6.1.nupkg.sha512",

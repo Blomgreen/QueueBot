@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -105,7 +106,7 @@ namespace QueueBot
             var User = Context.User as SocketUser;
             if (File.ReadAllText(permissionsPath).Contains(User.Id.ToString()))
             {
-                string queuePath = $"{Environment.CurrentDirectory}\\velocity\\queue.txt";
+                string queuePath = $"{Environment.CurrentDirectory}\\queue.txt";
                 if (File.ReadAllLines(queuePath).Contains(token))
                 {
                     List<string> tokenList = new List<string>();
@@ -161,12 +162,9 @@ namespace QueueBot
                     if (firstToken == 0)
                     {
                         content += line + Active_Emoji + "\n";
-                        firstToken++;
+
                     }
-                    else
-                    {
-                        content += line + Awaiting_Emoji + "\n";
-                    }
+                    content += line + Awaiting_Emoji + "\n";
                 }
 
 
@@ -252,6 +250,77 @@ namespace QueueBot
             }
 
             
+        }
+        [Command("check")]
+        [Alias("Check")]
+        public async Task tokenCheck(string token)
+        {
+            var User = Context.User as SocketUser;
+            string Message = Context.Message.Content;
+
+            if (File.ReadAllText(permissionsPath).Contains(User.Id.ToString())) // check perms
+            {
+                try
+                {
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://discord.com/api/v9/users/@me");
+                    request.ContentType = "application/json";
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.Timeout = 20000;
+                    request.Headers = new WebHeaderCollection()
+                {
+                       {
+                        "Authorization", token
+                        }
+                };
+
+                    WebResponse response = request.GetResponse();
+                    Stream responseStream = response.GetResponseStream();
+                    StreamReader sr = new StreamReader(responseStream);
+                    string result = sr.ReadToEnd();
+
+                    dynamic json = JsonConvert.DeserializeObject(result);
+
+                    Console.WriteLine(result);
+                    string username = json.username;
+                    string discriminator = json.discriminator;
+
+                    string discordID = json.id;
+                    string email = json.email;
+
+                    string verified = json.verified;
+                    string phoneNum = json.phone;
+
+                    var embed = new EmbedBuilder
+                    {
+                        // Embed property can be set within object initializer
+                        Title = "Hello world!",
+                        Description = "I am a description set by initializer."
+                    };
+                    string content = $"**Token:** {token}\n**Username:** {username}#{discriminator}\n**ID:** {discordID}\n**Verified?:** {verified}\n**PhoneNumber:** {phoneNum}\n**Mail:** {email}";
+                    // Or with methods
+                    embed.AddField("Checked Token",
+                        content)
+                        .WithAuthor(Context.Client.CurrentUser)
+                        .WithFooter(footer => footer.Text = "Blomgreen#6969")
+                        .WithColor(Color.Blue)
+                        .WithTitle("")
+                        .WithDescription("")
+                        .WithCurrentTimestamp();
+
+                    //Your embed needs to be built before it is able to be sent
+                    await ReplyAsync(embed: embed.Build());
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                await ReplyAsync("you do not have permission to use this command");
+
+            }
         }
     }
 }

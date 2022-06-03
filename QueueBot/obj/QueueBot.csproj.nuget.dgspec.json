@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\QueueBot.csproj": {}
+    "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\QueueBot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\QueueBot.csproj": {
+    "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\QueueBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\QueueBot.csproj",
+        "projectUniqueName": "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\QueueBot.csproj",
         "projectName": "QueueBot",
-        "projectPath": "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\QueueBot.csproj",
+        "projectPath": "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\QueueBot.csproj",
         "packagesPath": "C:\\Users\\Disabled\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Disabled\\source\\repos\\QueueBot\\QueueBot\\obj\\",
+        "outputPath": "C:\\Users\\Disabled\\source\\repos\\QueueBot windows src\\QueueBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Disabled\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -18,8 +18,8 @@ namespace QueueBot
 
         public static void addTokenToQueue(string token, int amount)
         {
-            string queuePath = $"{Environment.CurrentDirectory}\\velocity\\queue.txt";
-            string velocityPath = $"{Environment.CurrentDirectory}\\velocity\\velocitysniper.exe";
+            string queuePath = $"{Environment.CurrentDirectory}\\queue.txt";
+            string velocityPath = $"{Environment.CurrentDirectory}\\velocitysniper.exe";
 
             Console.WriteLine("Trying to close existing velocity");
 
@@ -76,7 +76,7 @@ namespace QueueBot
         public static void forceRestart()
         {
 
-            string velocityPath = $"{Environment.CurrentDirectory}\\velocity\\velocitysniper.exe";
+            string velocityPath = $"{Environment.CurrentDirectory}\\velocitysniper.exe";
 
             //Try to find and close process with the name 'velocitysniper'
             try
@@ -110,7 +110,7 @@ namespace QueueBot
 
         public static List<string> printQueue()
         {
-            string queuePath = $"{Environment.CurrentDirectory}\\velocity\\queue.txt";
+            string queuePath = $"{Environment.CurrentDirectory}\\queue.txt";
 
             string[] allTokensRaw = File.ReadAllLines(queuePath);
 

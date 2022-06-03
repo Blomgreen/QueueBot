@@ -11,11 +11,11 @@ Step 3.
 Add the bot token to 'bot token.txt' (Just plaintext the first line)
 
 Step 4.
-Transfer all of your velocity files, and place them next to the bot
+Transfer all of your velocity files to the subfolder 'velocity'
 
 Step 5.
 Add the proper emote ID's to emojis.txt
-To get the proper id, write in a chat: (backslash):emoteName:
+To get the proper id, write in a chat: \:emoteName:
 and copy. THE EMOTE IN QUESTION HAS TO BE ON YOUR SERVER!
 
 
