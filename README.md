@@ -15,7 +15,7 @@ Transfer all of your velocity files, and place them next to the bot
 
 Step 5.
 Add the proper emote ID's to emojis.txt
-To get the proper id, write in a chat: \:emoteName:
+To get the proper id, write in a chat: (backslash):emoteName:
 and copy. THE EMOTE IN QUESTION HAS TO BE ON YOUR SERVER!
 
 
