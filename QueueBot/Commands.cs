@@ -35,7 +35,7 @@ namespace QueueBot
                     Title = "Hello world!",
                     Description = "I am a description set by initializer."
                 };
-                string content = "/help - Display all available commands\n/queueadd {token} {amount} - add a token to the sniping queue\n/restart - restart / forcestart the sniper\n/removetoken {token} - completely removes a token from the queue\n/queue - Print the current queue, AND check if their tokens are valid\n/status - Use your API key, to get stats regarding servers, alts and sniped nitro";
+                string content = "/help - Display all available commands\n/queueadd {token} {amount} - add a token to the sniping queue\n/restart - restart / forcestart the sniper\n/removetoken {token} - completely removes a token from the queue\n/queue - Print the current queue, AND check if their tokens are valid\n/status - Use your API key, to get stats regarding servers, alts and sniped nitro\n/check {token} - Check a token, before adding it, to make sure it's fully verified";
                 // Or with methods
                 embed.AddField("Command list",
                     content)
