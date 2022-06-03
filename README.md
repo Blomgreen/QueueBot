@@ -11,7 +11,7 @@ Step 3.
 Add the bot token to 'bot token.txt' (Just plaintext the first line)
 
 Step 4.
-Transfer all of your velocity files to the subfolder 'velocity'
+Transfer all of your velocity files, and place them next to the bot
 
 Step 5.
 Add the proper emote ID's to emojis.txt
