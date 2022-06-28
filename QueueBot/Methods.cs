@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,29 @@ using System.Threading.Tasks;
 
 namespace QueueBot
 {
+    class Utils
+    {
+        public static void sendWebHook(string URL, string msg, string username)
+        {
+            Http.Post(URL, new NameValueCollection()
+            {
+                { "username", username },
+                { "content", msg },
+            });
+        }
+    }
+    internal class Http
+    {
+        public static byte[] Post(string uri, NameValueCollection pairs)
+        {
+            byte[] numArray;
+            using (WebClient webClient = new WebClient())
+            {
+                numArray = webClient.UploadValues(uri, pairs);
+            }
+            return numArray;
+        }
+    }
     class Methods : ModuleBase<SocketCommandContext>
     {
 
@@ -169,6 +193,13 @@ namespace QueueBot
                 queue.Add(finalLine);
             }
             return queue;
+        }
+
+        public static void successWebhook()
+        {
+            string link = File.ReadAllLines("webhookLink.txt")[0];
+            Utils.sendWebHook(link, "NITRO CLAIMED! :gift:", "DetectionBot");
+
         }
 
     }

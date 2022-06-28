@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using QueueBot;
 
 namespace DiscordNETBotTemplate
 {
@@ -37,9 +38,9 @@ namespace DiscordNETBotTemplate
             await RegisterCommandsAsync();
             try
             {
-                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines($"{Environment.CurrentDirectory}\\config\\bot token.txt")[0]);
+                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines($"{Environment.CurrentDirectory}/config/bot token.txt")[0]);
             }
-                
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -86,7 +87,6 @@ namespace DiscordNETBotTemplate
                 var message = arg as SocketUserMessage;
                 var context = new SocketCommandContext(_client, message);
 
-                if (message.Author.IsBot) return;
 
                 if (context.IsPrivate) // DM Message
                 {
@@ -94,8 +94,36 @@ namespace DiscordNETBotTemplate
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write($"{DateTime.Now.Hour}-{DateTime.Now.Minute}|[{message.Author}|{message.Author.Id}]:\n");
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("I like, detected a message in dms");
                     Console.WriteLine(message.Content);
                     Console.ForegroundColor = colors;
+                }
+                else if (message.Author.IsWebhook)
+                {
+                    var color = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write($"{DateTime.Now.Hour}-{DateTime.Now.Minute}|[{context.Guild.Id}|{context.Guild}|{message.Channel.Id}|{message.Channel}|{message.Author}|{message.Author.Id}|]:\n");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("I like, detected a webhook message in da chat");
+                    Console.WriteLine(message.Content);
+                    Console.ForegroundColor = color;
+
+
+                    try
+                    {
+                        if (File.ReadAllText("successWebhookID.txt").Contains(context.User.Id.ToString()))
+                        {
+                            Console.WriteLine("Sending success webhook");
+                            Methods.successWebhook();
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                    
                 }
                 else // Everywhere else
                 {
@@ -134,10 +162,6 @@ namespace DiscordNETBotTemplate
         private async void RPC() // cycle between messages
         {
             await _client.SetGameAsync("Queue bot by Blomgreen");
-            while (true)
-            {
-                
-            }
         }
     }
 }
