@@ -15,8 +15,9 @@ Transfer all of your velocity files to the subfolder 'velocity'
 
 Step 5.
 Add the proper emote ID's to emojis.txt
-To get the proper id, write in a chat: \:emoteName:
-and copy. THE EMOTE IN QUESTION HAS TO BE ON YOUR SERVER!
+To get the proper id, write in a chat: (backslash):emoteName:
+and copy. 
+THE EMOTE IN QUESTION HAS TO BE ON YOUR SERVER!
 
 
 You can now launch the bot , and start the sniper with the /restart, command.
