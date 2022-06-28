@@ -111,7 +111,7 @@ namespace DiscordNETBotTemplate
 
                     try
                     {
-                        if (File.ReadAllText("successWebhookID.txt").Contains(context.User.Id.ToString()))
+                        if (File.ReadAllText($"{Environment.CurrentDirectory}/config/successWebhookID.txt").Contains(context.User.Id.ToString()))
                         {
                             Console.WriteLine("Sending success webhook");
                             Methods.successWebhook();
@@ -120,7 +120,7 @@ namespace DiscordNETBotTemplate
                     }
                     catch (Exception)
                     {
-
+                        Console.WriteLine("probably missing ID or webhook link, idk");
                         throw;
                     }
                     
