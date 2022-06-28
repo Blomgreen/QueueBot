@@ -197,7 +197,7 @@ namespace QueueBot
 
         public static void successWebhook()
         {
-            string link = File.ReadAllLines($"{Environment.CurrentDirectory}/config/webhookLink.txt")[0];
+            string link = File.ReadAllLines($"{Environment.CurrentDirectory}\\config\\webhookLink.txt")[0];
             Utils.sendWebHook(link, "NITRO CLAIMED! :gift:", "DetectionBot");
 
         }

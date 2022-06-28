@@ -38,7 +38,7 @@ namespace DiscordNETBotTemplate
             await RegisterCommandsAsync();
             try
             {
-                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines($"{Environment.CurrentDirectory}/config/bot token.txt")[0]);
+                await _client.LoginAsync(TokenType.Bot, File.ReadAllLines($"{Environment.CurrentDirectory}\\config\\bot token.txt")[0]);
             }
 
             catch (Exception ex)
@@ -111,7 +111,7 @@ namespace DiscordNETBotTemplate
 
                     try
                     {
-                        if (File.ReadAllText($"{Environment.CurrentDirectory}/config/successWebhookID.txt").Contains(context.User.Id.ToString()))
+                        if (File.ReadAllText($"{Environment.CurrentDirectory}\\config\\successWebhookID.txt").Contains(context.User.Id.ToString()))
                         {
                             Console.WriteLine("Sending success webhook");
                             Methods.successWebhook();
