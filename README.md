@@ -1,5 +1,5 @@
 # QueueBot
-A queuebot for integrating velocity sniper with discord bot commands - FOR WINDOWS ONLY
+A queuebot for integrating velocity sniper with discord bot commands
 
 Step 1.
 Download the latest release.
